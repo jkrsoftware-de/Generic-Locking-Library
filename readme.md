@@ -8,6 +8,12 @@
 
 ---
 
+## The Software-License.
+This Software is free forever.
+You can have a look at: [license.md](license.md)
+
+---
+
 ## About the Locking-Libraries.
 > xxx
 
