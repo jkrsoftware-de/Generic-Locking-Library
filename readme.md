@@ -11,7 +11,7 @@ Just read the following Paragraphs. 😊
 
 ---
 
-## I use the „Ports & Adapters“- / „Hexagonal“-Software-Design.
+### I use the „Ports & Adapters“- / „Hexagonal“-Software-Design.
 For every newly-created Software-Products, I use the *„Ports & Adapters“-Design*.
 
 For better understanding — what the *„Ports & Adapters“-Design* is — have a look here: [Wikipedia (EN) · Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
