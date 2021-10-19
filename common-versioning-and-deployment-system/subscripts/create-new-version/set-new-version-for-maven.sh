@@ -10,12 +10,12 @@
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
 
-readonly NEW_VERSION=${1}
+readonly NEW_VERSION_TO_SET=${1}
 
-if [ -z ${NEW_VERSION} ]; then
+if [ -z ${NEW_VERSION_TO_SET} ]; then
   echo "Can't set a new Version (over Apache's Maven-Release Plugin), cause you don't specified a Text for the new one."
   exit 1
 fi
 
 mvn clean test verify
-mvn versions:set -DnewVersion=${NEW_VERSION}
+mvn versions:set -DnewVersion=${NEW_VERSION_TO_SET}

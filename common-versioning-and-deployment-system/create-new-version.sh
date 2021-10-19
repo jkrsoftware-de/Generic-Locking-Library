@@ -25,7 +25,7 @@ echo "${LOG_PREFIX}Start Creating new Version (\"${NEW_VERSION}\") on new Branch
 
 git fetch origin
 
-source "${PWD}/common-versioning-and-deployment-system/subscripts/global/setup-gitlab-repository-config.sh"
+source "${PWD}/common-versioning-and-deployment-system/subscripts/gitlab/setup-gitlab-repository-config.sh"
 
 source "${PWD}/common-versioning-and-deployment-system/subscripts/create-new-version/set-new-version-for-maven.sh" "${NEW_VERSION}"
 
