@@ -10,6 +10,13 @@
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
 
+readonly SYSTEM_TO_DEPLOY=${1}
+
+if [[ -z ${SYSTEM_TO_DEPLOY} ]]; then
+  echo "Can't deploy the current Version, cause you don't specified an System, where I should deploy it.";
+  exit 1
+fi
+
 case EXPRESSION in
 
   PATTERN_1)

@@ -10,11 +10,11 @@
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
 
-readonly SYSTEM_TO_DEPLOY=${1}
+# Set Commiter's Name and E-Mail.
+git config --global user.email "gitlab-ci.${CI_PIPELINE_ID}.${CI_JOB_ID}@$(hostname)"
+git config --global user.name "GitLab Deployment-Pipeline :)"
+# Set Commiter's Name and E-Mail.
 
-if [[ -z ${SYSTEM_TO_DEPLOY} ]]; then
-  echo "Can't deploy the current Version, cause you don't specified an System, where I should deploy it.";
-  exit 1
-fi
-
-
+# Set Remote-Git URL.
+git remote set-url --push origin "${GIT_REPOSITORY_URL_WITH_CREDENTIALS}"
+# Set Remote-Git URL.
