@@ -11,3 +11,6 @@ You can find everything here:<br />
 
 If you need help, just contact me, if you want.<br />
 I will help you. 😊
+
+Best wishes,<br />
+Jerry.
