@@ -11,7 +11,7 @@
 ###### 🌏 ###### 💬 ######
 
 ## Determine new Version and Branch-Name of the new Version. ##
-readonly NEW_VERSION="$(subscripts/create-new-version/determine-new-version.sh)"
+readonly NEW_VERSION="$("${PWD}subscripts/create-new-version/determine-new-version.sh")"
 readonly BRANCH_FOR_NEW_VERSION="new-version_${NEW_VERSION}"
 ## Determine new Version and Branch-Name of the new Version. ##
 
