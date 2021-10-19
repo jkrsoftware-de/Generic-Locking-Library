@@ -79,7 +79,7 @@ deploy to GitLab:
   allow_failure: false
   when: manual
   only:
-    - /^main$/
+    - /^release/
   script:
     - apt update -y && apt install git -y
     - common-versioning-and-deployment-system/deploy-new-version.sh "GITHUB"
