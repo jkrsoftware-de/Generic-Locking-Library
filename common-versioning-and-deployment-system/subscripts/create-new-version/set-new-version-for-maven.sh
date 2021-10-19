@@ -19,3 +19,4 @@ fi
 
 mvn clean test verify
 mvn versions:set -DnewVersion=${NEW_VERSION_TO_SET}
+git add pom.xml
