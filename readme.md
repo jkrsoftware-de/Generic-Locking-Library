@@ -11,6 +11,11 @@
 
 ---
 
+## 💬 Contact Me.
+If you need any help or just want to talk to me, have a look here: [contact-informations.md](contact-informations.md).
+
+---
+
 ## 📕 About all of my Software-Products.
 Just read the following Paragraphs. 😊
 

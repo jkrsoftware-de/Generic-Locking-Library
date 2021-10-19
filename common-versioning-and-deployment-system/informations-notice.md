@@ -12,4 +12,4 @@ Currently it's only considered for my own Purposes.<br />
 That doesn't mean, you can't use it right away — but this Bundle isn't optimized for a Public-Release.
 
 You can ask me, if you need help. 😊<br />
-You'll find my Contact-Informations on the Readme-Page.
+You'll find my Contact-Informations here: [contact-informations.md](../contact-informations.md).
