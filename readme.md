@@ -37,11 +37,11 @@ easy Way to lock Entities, such as:
 
 and so on.
 
-The **Entity-Locking-Libraries** providing me (and potentially all other Humans) an **easy-(to-use/to-implement/to-understand) Way** for to solve this Problem.
+The **Entity-Locking-Libraries** providing me (and potentially all other Humans) an **easy-(to-use/to-implement/to-understand) Way** to solve this Problem. :)
 
-If you want to **switch your Lock-Backend**, you easily switch to **another Variant of the Libraries**.
+If you want to **switch your Lock-Backend**, you easily switch to **another Variant of the Locking-Library**.
 
-Every Library (except of the Root-Library itself) is depending on the Generic-„Locking Library“.
+Every Library (except of the Root-Library itself) is depending on the „Generic-Locking-Library“.
 
 All other Libraries are Abstractions to have a better understanding for the Outside-World and to have a good 
 Foundation for further Development-Approaches.
@@ -52,12 +52,11 @@ Foundation for further Development-Approaches.
 It's very easy to implement in your Application and easy to understand.
 
 You can have an **Entity-Locking-Solution** right out of the Box for (currently) **_Plain Java_** and
-**Spring Boot-optimized** Apps.
+**_Spring Boot-optimized_** Apps.
 
 The Generic-Locking-Library is the Foundation of every Locking-Library developed by me.
 
-You can use the **Generic-Locking-Library** and use your own Lock-Backend-Implementation — or — you use my 
-Implementations, in the Form of Extension-Libraries, such as:
+You can use the **Generic-Locking-Library** in Combination with your own Lock-Backend-Implementation — or — you use my Implementations, in the Form of Extension-Libraries, such as:
 * (coming soon) the **DynamoDB-Locking-Library**
   * for _Spring Boot_-Apps: *DynamoDB-Locking-Library-SpringBoot-Starter*
 * (coming soon) the **Redis-Locking-Library**
