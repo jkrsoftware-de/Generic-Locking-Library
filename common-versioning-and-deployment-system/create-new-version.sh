@@ -29,7 +29,7 @@ source "${PWD}/common-versioning-and-deployment-system/subscripts/gitlab/setup-g
 
 source "${PWD}/common-versioning-and-deployment-system/subscripts/create-new-version/set-new-version-for-maven.sh" "${NEW_VERSION}"
 
-source "${PWD}/common-versioning-and-deployment-system/subscripts/git-tools/commit-current-workspace-and-tag-commit.sh" "${COMMIT_MESSAGE_FOR_NEW_VERSION}" "${COMMIT_MESSAGE_FOR_NEW_VERSION}"
+source "${PWD}/common-versioning-and-deployment-system/subscripts/git-tools/commit-current-workspace-and-tag-commit.sh" "${COMMIT_MESSAGE_FOR_NEW_VERSION}" "${NEW_VERSION}"
 
 source "${PWD}/common-versioning-and-deployment-system/subscripts/git-tools/push-latest-commit-of-current-workspace.sh" "${BRANCH_FOR_NEW_VERSION}"
 

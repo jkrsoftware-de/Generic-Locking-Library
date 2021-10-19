@@ -31,4 +31,4 @@ echo "hey"
 readonly COMMIT_ID_OF_LAST_COMMIT="$(git rev-parse --verify HEAD)"
 
 echo "hey22 ${COMMIT_ID_OF_LAST_COMMIT}"
-git tag -a ${GIT_TAG} ${COMMIT_ID_OF_LAST_COMMIT} -m "${COMMIT_MESSAGE}"
+git tag -a "${GIT_TAG}" "${COMMIT_ID_OF_LAST_COMMIT}" -m "${COMMIT_MESSAGE}"
