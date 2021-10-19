@@ -16,7 +16,7 @@ git config --global user.name "GitLab Deployment-Pipeline :)"
 # Set Commiter's Name and E-Mail.
 
 # Set Remote-Git URL.
-git remote set-url origin "${CI_BUILD_REPO}"
+git remote set-url --push origin "${CI_BUILD_REPO}"
 # Set Remote-Git URL.
 
 # Set Remote-Git Credentials. #
