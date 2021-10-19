@@ -10,11 +10,21 @@
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
 
-readonly SYSTEM_TO_DEPLOY=${1}
+case EXPRESSION in
 
-if [[ -z ${SYSTEM_TO_DEPLOY} ]]; then
-  echo "Can't deploy the current Version, cause you don't specified an System, where I should deploy it.";
-  exit 1
-fi
+  PATTERN_1)
+    STATEMENTS
+    ;;
 
+  PATTERN_2)
+    STATEMENTS
+    ;;
 
+  PATTERN_N)
+    STATEMENTS
+    ;;
+
+  *)
+    STATEMENTS
+    ;;
+esac

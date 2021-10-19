@@ -18,6 +18,8 @@ services:
 stages:
   - build-stage
   - version-creation-stage
+  - version-deployment-stage-manual-approval
+  - version-deployment-stage
 
 ## Global Variable for every Pipeline.
 variables:
@@ -28,7 +30,7 @@ variables:
 ## Pipeline Jobs
 
 ### Standard Maven-Build.
-maven-build:
+Maven (Build):
   stage: build-stage
   image: maven:3.8-openjdk-11-slim
   allow_failure: false
@@ -38,7 +40,7 @@ maven-build:
   script: "mvn clean package -B"
 
 ### Standard Maven-Test.
-maven-test:
+Maven (Run Tests):
   stage: build-stage
   image: maven:3.8-openjdk-11-slim
   allow_failure: false
@@ -48,7 +50,7 @@ maven-test:
   script: "mvn clean test verify"
 
 ### Version-Creation.
-create new version:
+create new Version:
   stage: version-creation-stage
   image: maven:3.8-openjdk-11-slim
   allow_failure: false
@@ -56,5 +58,28 @@ create new version:
   only:
     - /^main$/
   script:
-    - apt update -y && apt install git iputils-ping -y
+    - apt update -y && apt install git -y
     - common-versioning-and-deployment-system/create-new-version.sh
+
+### Manual-Approval for Version-Deployment.
+deploy current Version:
+  stage: version-creation-stage-manual-approval
+  image: alpine:latest
+  allow_failure: false
+  when: manual
+  only:
+    - /^release$/
+  script:
+    - echo "Deployment (of the current Version) has been triggered."
+
+### Version-Deployment (GitHub).
+deploy to GitLab:
+  stage: version-creation-stage
+  image: maven:3.8-openjdk-11-slim
+  allow_failure: false
+  when: manual
+  only:
+    - /^main$/
+  script:
+    - apt update -y && apt install git -y
+    - common-versioning-and-deployment-system/deploy-new-version.sh "GITHUB"
