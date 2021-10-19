@@ -13,12 +13,12 @@
 readonly COMMIT_MESSAGE=${1}
 readonly GIT_TAG=${2}
 
-if [ -z ${COMMIT_MESSAGE} ]; then
+if [[ -z ${COMMIT_MESSAGE} ]]; then
   echo "Can't commit (and tag the newly-created Commit) of the current Workspace, cause you don't provided a Commit-Message.";
   exit 1
 fi
 
-if [ -z ${GIT_TAG} ]; then
+if [[ -z ${GIT_TAG} ]]; then
   echo "Can't commit (and tag the newly-created Commit) of the current Workspace, cause you don't provided a Git-Tag to set.";
   exit 1
 fi

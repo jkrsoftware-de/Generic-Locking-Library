@@ -12,7 +12,7 @@
 
 readonly BRANCH_TO_COMMIT=${1}
 
-if [ -z ${BRANCH_TO_COMMIT} ]; then
+if [[ -z ${BRANCH_TO_COMMIT} ]]; then
   echo "Can't push the latest Commit (of the current Workspace) to the Remote-Repository, cause you don't provided a Remote-Branch.";
   exit 1
 fi
