@@ -63,7 +63,7 @@ create new Version:
 
 ### Manual-Approval for Version-Deployment.
 deploy current Version:
-  stage: version-creation-stage-manual-approval
+  stage: version-deployment-stage-manual-approval
   image: alpine:latest
   allow_failure: false
   when: manual
@@ -74,7 +74,7 @@ deploy current Version:
 
 ### Version-Deployment (GitHub).
 deploy to GitLab:
-  stage: version-creation-stage
+  stage: version-deployment-stage
   image: maven:3.8-openjdk-11-slim
   allow_failure: false
   when: manual
