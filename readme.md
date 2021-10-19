@@ -1,5 +1,10 @@
 # Generic Locking-Library.
 
+> **Early Release**:<br />
+> You look on an early Release of this Library.<br />
+> I'll remove this Notification/Reminder, if I think, i'm done developing on this Core-Library.<br />
+> Feel free to help me. 😊
+
 ## 🔎 Table of Contents (ToC)
 
 [[_TOC_]]
@@ -39,12 +44,21 @@ and so on.
 
 The **Entity-Locking-Libraries** providing me (and potentially all other Humans) an **easy-(to-use/to-implement/to-understand) Way** to solve this Problem. :)
 
-If you want to **switch your Lock-Backend**, you easily switch to **another Variant of the Locking-Library**.
+If you want to **switch your Lock-Backend**, you can easily switch to **another Abstraction-Variant of the Locking-Library**.
 
 Every Library (except of the Root-Library itself) is depending on the „Generic-Locking-Library“.
 
-All other Libraries are Abstractions to have a better understanding for the Outside-World and to have a good 
-Foundation for further Development-Approaches.
+**Why didn't I put everything just in one Library? :)**
+<br />
+This Expansion/Extension-Library-Concept was my first thought.
+<br />
+I loved this Idea.
+
+I decided to design/develop the Libraries in this Way, cause:
+* the Expandability/Understandability is much higher for the Outside-World
+* and I've a good Foundation for further Development-Approaches.<br />
+  Don't need to update the Core-Library, if I only want to develop a new Implementation.
+
 
 ---
 
