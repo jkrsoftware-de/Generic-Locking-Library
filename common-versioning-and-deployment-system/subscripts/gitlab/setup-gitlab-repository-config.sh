@@ -10,6 +10,16 @@
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
 
+# Set Commiter's Name and E-Mail.
 git config --global user.email "gitlab-ci.${CI_PIPELINE_ID}.${CI_JOB_ID}@$(hostname)"
 git config --global user.name "GitLab Deployment-Pipeline :)"
+# Set Commiter's Name and E-Mail.
+
+# Set Remote-Git URL.
 git remote set-url origin ${CI_BUILD_REPO}
+# Set Remote-Git URL.
+
+# Set Remote-Git Credentials. #
+git config --global credential.helper store
+echo "${GIT_CREDENTIALS_FILE_CONTENT}" > '.git-credentials'
+# Set Remote-Git Credentials. #
