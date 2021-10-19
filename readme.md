@@ -37,8 +37,7 @@ easy Way to lock Entities, such as:
 
 and so on.
 
-The **Entity-Locking-Libraries** providing me (and potentially all other Humans) an **easy-
-(to-use/to-implement/to-understand) Way** for to solve this Problem.
+The **Entity-Locking-Libraries** providing me (and potentially all other Humans) an **easy-(to-use/to-implement/to-understand) Way** for to solve this Problem.
 
 If you want to **switch your Lock-Backend**, you easily switch to **another Variant of the Libraries**.
 
@@ -57,11 +56,11 @@ You can have an **Entity-Locking-Solution** right out of the Box for (currently)
 
 The Generic-Locking-Library is the Foundation of every Locking-Library developed by me.
 
-You can use the Generic-Locking-Library and use your own Lock-Backend-Implementation — or — you use my 
+You can use the **Generic-Locking-Library** and use your own Lock-Backend-Implementation — or — you use my 
 Implementations, in the Form of Extension-Libraries, such as:
-* (coming soon) the *DynamoDB-Locking-Library*
+* (coming soon) the **DynamoDB-Locking-Library**
   * for _Spring Boot_-Apps: *DynamoDB-Locking-Library-SpringBoot-Starter*
-* (coming soon) the *Redis-Locking-Library*
+* (coming soon) the **Redis-Locking-Library**
     * for _Spring Boot_-Apps: *Redis-Locking-Library-SpringBoot-Starter*
 
 ---
