@@ -16,10 +16,5 @@ git config --global user.name "GitLab Deployment-Pipeline :)"
 # Set Commiter's Name and E-Mail.
 
 # Set Remote-Git URL.
-git remote set-url --push origin "${CI_PROJECT_URL}"
+git remote set-url --push origin "${GIT_REPOSITORY_URL_WITH_CREDENTIALS}"
 # Set Remote-Git URL.
-
-# Set Remote-Git Credentials. #
-git config --global credential.helper store
-echo "${GIT_CREDENTIALS_FILE_CONTENT}" > '.git-credentials'
-# Set Remote-Git Credentials. #
