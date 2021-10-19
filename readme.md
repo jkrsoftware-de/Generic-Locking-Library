@@ -12,9 +12,9 @@ Just read the following Paragraphs. 😊
 ---
 
 ### I use the „Ports & Adapters“- / „Hexagonal“-Software-Design.
-For every newly-created Software-Products, I use the *„Ports & Adapters“-Design*.
+For every newly-created Software-Products, I use the **„Ports & Adapters“-Design**.
 
-For better understanding — what the *„Ports & Adapters“-Design* is — have a look here: [Wikipedia (EN) · Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
+For better understanding — what the **„Ports & Adapters“-Design** is — have a look here: [Wikipedia (EN) · Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
 
 ---
 
@@ -64,9 +64,6 @@ Implementations, in the Form of Extension-Libraries, such as:
 * (coming soon) the *Redis-Locking-Library*
     * for _Spring Boot_-Apps: *Redis-Locking-Library-SpringBoot-Starter*
 
-
-
-
 ---
 
 ## The Project-Structure.
@@ -85,6 +82,7 @@ Root-Directory.
 ├─ .gitignore
 ├─ .gitlab-ci.yml
 ├─ license.md
+├─ pom.xml
 └─ readme.md
 ```
 
