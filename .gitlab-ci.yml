@@ -56,5 +56,5 @@ create new version:
   only:
     - /^main$/
   script:
-    - apt update -y && apt install git -y
+    - apt update -y && apt install git iputils-ping -y
     - common-versioning-and-deployment-system/create-new-version.sh
