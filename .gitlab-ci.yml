@@ -56,4 +56,5 @@ create new version:
   only:
     - /^main$/
   script:
+    - apt update -y && apt install git -y
     - common-versioning-and-deployment-system/create-new-version.sh
