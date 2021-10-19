@@ -21,7 +21,7 @@ For better understanding — what the **„Ports & Adapters“-Design** is — h
 ### 📃 The underlying Software-License.
 This Software is free forever.
 
-There is nothing to pay and nothing to fulfill, to use/edit/(re-)publish my written Software-Code.
+There is nothing to pay and nothing to fulfill, to use / to edit / to (re-)publish my written Software-Code.
 
 *You can also have a look at: [license.md](license.md) in the same Directory.*
 
