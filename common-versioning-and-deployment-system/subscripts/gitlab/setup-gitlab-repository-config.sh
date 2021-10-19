@@ -23,7 +23,3 @@ git remote set-url --push origin "${CI_PROJECT_URL}"
 git config --global credential.helper store
 echo "${GIT_CREDENTIALS_FILE_CONTENT}" > '.git-credentials'
 # Set Remote-Git Credentials. #
-ls -lsah
-cat .git-credentials
-ping gitlab.jkr.one
-exit 1
