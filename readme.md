@@ -37,10 +37,10 @@ easy Way to lock Entities, such as:
 
 and so on.
 
-The Entity-Locking-Libraries providing me (and potentially all other Humans) an easy-
-(to-use/to-implement/to-understand) Way for to solve this Problem.
+The **Entity-Locking-Libraries** providing me (and potentially all other Humans) an **easy-
+(to-use/to-implement/to-understand) Way** for to solve this Problem.
 
-If you want to switch your Lock-Backend, you easily switch to another Variant of the Libraries.
+If you want to **switch your Lock-Backend**, you easily switch to **another Variant of the Libraries**.
 
 Every Library (except of the Root-Library itself) is depending on the Generic-„Locking Library“.
 
@@ -52,8 +52,8 @@ Foundation for further Development-Approaches.
 ## Why should I use one of these Libraries?
 It's very easy to implement in your Application and easy to understand.
 
-You can have an Entity-Locking-Solution right out of the Box for (currently) _Plain Java_ and _Spring Boot-optimized_ 
-Apps.
+You can have an **Entity-Locking-Solution** right out of the Box for (currently) **_Plain Java_** and
+**Spring Boot-optimized** Apps.
 
 The Generic-Locking-Library is the Foundation of every Locking-Library developed by me.
 
