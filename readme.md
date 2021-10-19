@@ -1,24 +1,24 @@
 # Generic Locking-Library.
 
-## Table of Contents (ToC)
+## 🔎 Table of Contents (ToC)
 
 [[_TOC_]]
 
 ---
 
-## About all of my Software-Products.
+## 📕 About all of my Software-Products.
 Just read the following Paragraphs. 😊
 
 ---
 
-### I use the „Ports & Adapters“- / „Hexagonal“-Software-Design.
+### 📃 I use the „Ports & Adapters“- / „Hexagonal“-Software-Design.
 For every newly-created Software-Products, I use the **„Ports & Adapters“-Design**.
 
 For better understanding — what the **„Ports & Adapters“-Design** is — have a look here: [Wikipedia (EN) · Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
 
 ---
 
-### The underlying Software-License.
+### 📃 The underlying Software-License.
 This Software is free forever.
 
 There is nothing to pay and nothing to fulfill, to use/edit/(re-)publish my written Software-Code.
@@ -27,7 +27,7 @@ There is nothing to pay and nothing to fulfill, to use/edit/(re-)publish my writ
 
 ---
 
-## About the „Entity Locking“-Libraries.
+## 📙 About the „Entity Locking“-Libraries.
 I'm developing the Entity Locking-Libraries, cause in many of my current (and future) Software-Products, I need an 
 easy Way to lock Entities, such as:
 * Payment-Transactions for Reality.
@@ -48,7 +48,7 @@ Foundation for further Development-Approaches.
 
 ---
 
-## Why should I use one of these Libraries?
+### 📃 Why should I use one of these Libraries?
 It's very easy to implement in your Application and easy to understand.
 
 You can have an **Entity-Locking-Solution** right out of the Box for (currently) **_Plain Java_** and
@@ -65,7 +65,7 @@ Implementations, in the Form of Extension-Libraries, such as:
 
 ---
 
-## The Project-Structure.
+## 📘 The Project-Structure.
 
 ```
 Root-Directory.
