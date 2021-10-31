@@ -21,4 +21,5 @@ readonly LAST_COMMIT_ID="$(git rev-parse --verify HEAD)"
 
 echo "${LOG_PREFIX}Push the latest Commit (of the current Workspace) to the Git-Repository."
 git checkout -b ${BRANCH_TO_COMMIT}
+echo "git push origin ${LAST_COMMIT_ID}:${BRANCH_TO_COMMIT} --tags"
 git push origin ${LAST_COMMIT_ID}:${BRANCH_TO_COMMIT} --tags
