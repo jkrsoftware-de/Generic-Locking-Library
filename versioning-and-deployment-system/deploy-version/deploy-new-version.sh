@@ -20,8 +20,6 @@ fi
 
 if [ "${DEPLOYMENT_VARIANT}" == "MAVEN_DEPLOYMENT" ]; then
   cp "${M2_SETTINGS_FILECONTENT}" "${HOME}/.m2/settings.xml"
-  echo ${GPG2_PRIVATE_KEY_PASSPHRASE} | gpg --batch --yes --passphrase-fd 0 ${GPG2_PRIVATE_KEY_FILE}
+  echo "${GPG2_PRIVATE_KEY_PASSPHRASE}" | gpg --batch --yes --passphrase-fd 0 "${GPG2_PRIVATE_KEY_FILE}"
   mvn clean deploy
 fi
-
-

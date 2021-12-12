@@ -59,7 +59,7 @@ create new Version of the Software-Project:
     - versioning-and-deployment-system/create-version/create-new-version.sh
 
 ### Version-Deployment (to Sonatype Maven-Central via Maven).
-deploy to GitHub:
+deploy to Sonatype Maven-Central via Maven:
   image: maven:3.8-openjdk-11-slim
   stage: version-deployment-stage
   allow_failure: false
@@ -67,5 +67,5 @@ deploy to GitHub:
   only:
     - /^release/
   script:
-    - apt update -y && apt install git gpg2 -y
+    - apt update -y && apt install git gnupg2 -y
     - versioning-and-deployment-system/deploy-version/deploy-new-version.sh 'MAVEN_DEPLOYMENT'
