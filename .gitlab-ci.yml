@@ -44,7 +44,11 @@ Run Tests of the Application:
   cache:
     paths:
       - '.m2/'
-  script: "mvn clean test verify"
+  script:
+    - apt update -y && apt install git gnupg2 -y
+    - cp "${M2_SETTINGS_FILECONTENT}" "${HOME}/.m2/settings.xml"
+    - echo "${GPG2_PRIVATE_KEY_PASSPHRASE}" | gpg2 --batch --yes --passphrase-fd 0 "${GPG2_PRIVATE_KEY_FILE}"
+    - mvn clean test verify
 
 ### Version-Creation.
 create new Version of the Software-Project:
@@ -68,4 +72,6 @@ deploy to Sonatype Maven-Central via Maven:
     - /^release/
   script:
     - apt update -y && apt install git gnupg2 -y
+    - cp "${M2_SETTINGS_FILECONTENT}" "${HOME}/.m2/settings.xml"
+    - echo "${GPG2_PRIVATE_KEY_PASSPHRASE}" | gpg2 --batch --yes --passphrase-fd 0 "${GPG2_PRIVATE_KEY_FILE}"
     - versioning-and-deployment-system/deploy-version/deploy-new-version.sh 'MAVEN_DEPLOYMENT'

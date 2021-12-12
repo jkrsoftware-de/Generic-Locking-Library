@@ -19,7 +19,7 @@ if [[ -z ${DEPLOYMENT_VARIANT} ]]; then
 fi
 
 if [ "${DEPLOYMENT_VARIANT}" == "MAVEN_DEPLOYMENT" ]; then
-  cp "${M2_SETTINGS_FILECONTENT}" "${HOME}/.m2/settings.xml"
-  echo "${GPG2_PRIVATE_KEY_PASSPHRASE}" | gpg --batch --yes --passphrase-fd 0 "${GPG2_PRIVATE_KEY_FILE}"
+  echo "${LOG_PREFIX}Start Maven-Deployment."
   mvn clean deploy
+  echo "${LOG_PREFIX}Maven-Deployment finished."
 fi
