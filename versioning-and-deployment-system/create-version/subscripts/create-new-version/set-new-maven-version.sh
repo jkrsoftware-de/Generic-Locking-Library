@@ -17,6 +17,6 @@ if [[ -z ${NEW_VERSION_TO_SET} ]]; then
   exit 1
 fi
 
-mvn clean test verify
-mvn versions:set -DnewVersion=${NEW_VERSION_TO_SET}
+mvn clean test verify -Dgpg.skip
+mvn versions:set "-DnewVersion=${NEW_VERSION_TO_SET}"
 git add pom.xml

@@ -44,7 +44,7 @@ Run Tests of the Application:
   cache:
     paths:
       - '.m2/'
-  script: 'mvn clean test verify'
+  script: 'mvn clean test verify -Dgpg.skip'
 
 ### Version-Creation.
 create new Version of the Software-Project:
