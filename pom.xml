@@ -12,7 +12,7 @@
 
 	<groupId>one.jkr.de.jkrsoftware.entity.locking.libraries</groupId>
 	<artifactId>Generic-Locking-Library</artifactId>
-	<version>SNAPSHOT</version>
+	<version>2021-12-12_22-50_12a4266</version>
 	<name>Generic-Locking-Library</name>
 	<description>Java-Library for Entity-Locking — intended to be expanded by a more specific Library (e.g. DynamoDB-Locking-Library).</description>
 
