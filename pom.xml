@@ -117,13 +117,10 @@
 				<executions>
 					<execution>
 						<id>sign-artifacts</id>
-						<phase>deploy</phase>
+						<phase>verify</phase>
 						<goals>
 							<goal>sign</goal>
 						</goals>
-						<configuration>
-							<keyname>C39CBBC48FC7F42F99DCBD3D478BFC8B8E60C58B</keyname>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
