@@ -125,6 +125,9 @@
 						<goals>
 							<goal>sign</goal>
 						</goals>
+						<configuration>
+							<keyname>1C0F9AE7BC731C68B070EB8E0EAC7C12DBAE9545</keyname>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
