@@ -18,5 +18,5 @@ if [[ -n ${PATH_TO_CUSTOM_M2_SETTINGS_FILE} ]]; then
 fi
 
 echo "${LOG_PREFIX}Start Maven-Deployment."
-mvn deploy
+mvn clean compile verify deploy
 echo "${LOG_PREFIX}Maven-Deployment finished."
