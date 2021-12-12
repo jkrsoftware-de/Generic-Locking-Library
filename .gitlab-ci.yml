@@ -27,40 +27,38 @@ variables:
 ## Jobs.
 
 ### Build the Software-Project.
-#Build the Application:
-#  image: maven:3.8-openjdk-11-slim
-#  stage: build-stage
-#  allow_failure: false
-#  cache:
-#    paths:
-#      - '.m2/'
-#  script: "mvn clean package -B"
+Build the Application:
+  image: maven:3.8-openjdk-11-slim
+  stage: build-stage
+  allow_failure: false
+  cache:
+    paths:
+      - '.m2/'
+  script: "mvn clean package -B"
 
 ### Run Tests of the Software-Project.
-#Run Tests of the Application:
-#  image: maven:3.8-openjdk-11-slim
-#  stage: build-stage
-#  allow_failure: false
-#  cache:
-#    paths:
-#      - '.m2/'
-#  script:
-#    - apt update -y && apt install git gnupg2 -y
-#    - cp ${M2_SETTINGS_FILECONTENT} "${HOME}/.m2/settings.xml"
-#    - echo "${GPG2_PRIVATE_KEY_PASSPHRASE}" | gpg2 --batch --yes --passphrase-fd 0 "${GPG2_PRIVATE_KEY_FILE}"
-#    - mvn clean test verify
-#
-#### Version-Creation.
-#create new Version of the Software-Project:
-#  image: maven:3.8-openjdk-11-slim
-#  stage: version-creation-stage
-#  allow_failure: false
-#  when: manual
-#  only:
-#    - /^main$/
-#  script:
-#    - apt update -y && apt install git -y
-#    - versioning-and-deployment-system/create-version/create-new-version.sh
+Run Tests of the Application:
+  image: maven:3.8-openjdk-11-slim
+  stage: build-stage
+  allow_failure: false
+  cache:
+    paths:
+      - '.m2/'
+  script:
+    - apt update -y && apt install git gnupg2 -y
+    - mvn clean test verify
+
+### Version-Creation.
+create new Version of the Software-Project:
+  image: maven:3.8-openjdk-11-slim
+  stage: version-creation-stage
+  allow_failure: false
+  when: manual
+  only:
+    - /^main$/
+  script:
+    - apt update -y && apt install git -y
+    - versioning-and-deployment-system/create-version/create-new-version.sh
 
 ### Version-Deployment (to Sonatype Maven-Central via Maven).
 deploy to Sonatype Maven-Central via Maven:
@@ -72,7 +70,5 @@ deploy to Sonatype Maven-Central via Maven:
     - /^release/
   script:
     - apt update -y && apt install git gnupg2 -y
-    - cp ${M2_SETTINGS_FILECONTENT} "${HOME}/.m2/settings.xml"
-    - gpg --import ${GPG2_PRIVATE_KEY_FILE}
-    - gpg --list-keys
-    - versioning-and-deployment-system/deploy-version/deploy-new-version.sh 'MAVEN_DEPLOYMENT'
+    - gpg --import ${GPG_PRIVATE_KEY_FILE}
+    - versioning-and-deployment-system/deploy-version/deploy-new-version.sh 'MAVEN_DEPLOYMENT' "${M2_SETTINGS_FILE}"
