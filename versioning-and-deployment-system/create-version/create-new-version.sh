@@ -26,6 +26,6 @@ source "${PWD}/versioning-and-deployment-system/create-version/subscripts/create
 
 source "${PWD}/versioning-and-deployment-system/create-version/subscripts/git-tools/commit-current-workspace-and-tag-commit.sh" "${COMMIT_MESSAGE_FOR_NEW_VERSION}" "${NEW_VERSION}"
 
-source "${PWD}/versioning-and-deployment-system/create-version/subscripts/git-tools/push-latest-commit-of-current-workspace.sh" "${BRANCH_FOR_NEW_VERSION}"
+source "${PWD}/versioning-and-deployment-system/create-version/subscripts/git-tools/push-current-workspace.sh" "${BRANCH_FOR_NEW_VERSION}"
 
 echo "${LOG_PREFIX}Created new Version of Software-Project on Branch \"${BRANCH_FOR_NEW_VERSION}\": \"${NEW_VERSION}\"."
