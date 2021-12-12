@@ -34,7 +34,7 @@ Build the Application:
   cache:
     paths:
       - '.m2/'
-  script: "mvn clean package -B"
+  script: 'mvn clean package -B'
 
 ### Run Tests of the Software-Project.
 Run Tests of the Application:
@@ -44,9 +44,7 @@ Run Tests of the Application:
   cache:
     paths:
       - '.m2/'
-  script:
-    - apt update -y && apt install git gnupg2 -y
-    - mvn clean test verify
+  script: 'mvn clean test verify'
 
 ### Version-Creation.
 create new Version of the Software-Project:
