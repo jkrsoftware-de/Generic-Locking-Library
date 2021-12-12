@@ -6,19 +6,14 @@
 # My Intention of creating/publishing Free-Software is to help our Public Society.
 # In this particular Case our newly-created "Computer-World". I mean everything regarding complex IT-Systems.
 #
-# made for jkrsoftware.de as Versioning- and Deployment-System.
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
+# Variables.
+readonly LOG_PREFIX='[Versioning- and Deployment-System: Version-Deployment]: ';
 
-readonly BRANCH_TO_COMMIT=${1}
+readonly SYSTEM_TO_DEPLOY=${1}
 
-if [[ -z ${BRANCH_TO_COMMIT} ]]; then
-  echo "Can't push the latest Commit (of the current Workspace) to the Remote-Repository, cause you don't provided a Remote-Branch.";
+if [[ -z ${SYSTEM_TO_DEPLOY} ]]; then
+  echo "Can't deploy the current Version, cause you don't specified an System, where I should deploy it.";
   exit 1
 fi
-
-readonly LAST_COMMIT_ID="$(git rev-parse --verify HEAD)"
-
-echo "${LOG_PREFIX}Push the latest Commit (of the current Workspace) to the Git-Repository."
-git checkout -b ${BRANCH_TO_COMMIT}
-git push origin ${BRANCH_TO_COMMIT} --tags

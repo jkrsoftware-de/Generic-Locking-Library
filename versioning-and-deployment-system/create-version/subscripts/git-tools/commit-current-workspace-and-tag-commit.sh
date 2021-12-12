@@ -6,7 +6,6 @@
 # My Intention of creating/publishing Free-Software is to help our Public Society.
 # In this particular Case our newly-created "Computer-World". I mean everything regarding complex IT-Systems.
 #
-# made for jkrsoftware.de as Versioning- and Deployment-System.
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
 
