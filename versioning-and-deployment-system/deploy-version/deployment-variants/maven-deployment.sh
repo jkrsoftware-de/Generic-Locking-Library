@@ -13,7 +13,7 @@ readonly LOG_PREFIX='[Versioning- and Deployment-System: Version-Deployment: Mav
 
 readonly PATH_TO_CUSTOM_M2_SETTINGS_FILE=${1}
 
-if [[ -z ${PATH_TO_CUSTOM_M2_SETTINGS_FILE} ]]; then
+if [[ -n ${PATH_TO_CUSTOM_M2_SETTINGS_FILE} ]]; then
   cp "${PATH_TO_CUSTOM_M2_SETTINGS_FILE}" "${HOME}/.m2/settings.xml"
 fi
 
