@@ -11,9 +11,17 @@
 # Variables.
 readonly LOG_PREFIX='[Versioning- and Deployment-System: Version-Deployment]: '
 
-readonly SYSTEM_TO_DEPLOY=${1}
+readonly DEPLOYMENT_VARIANT=${1}
 
-if [[ -z ${SYSTEM_TO_DEPLOY} ]]; then
-  echo "Can't deploy the current Version, cause you don't specified an System, where I should deploy it."
+if [[ -z ${DEPLOYMENT_VARIANT} ]]; then
+  echo "Can't deploy the current Version, cause you don't specified a Deployment-Variant."
   exit 1
 fi
+
+if [ "${DEPLOYMENT_VARIANT}" == "MAVEN_DEPLOYMENT" ]; then
+  cp "${M2_SETTINGS_FILECONTENT}" "${HOME}/.m2/settings.xml"
+  echo ${GPG2_PRIVATE_KEY_PASSPHRASE} | gpg --batch --yes --passphrase-fd 0 ${GPG2_PRIVATE_KEY_FILE}
+  mvn clean deploy
+fi
+
+
