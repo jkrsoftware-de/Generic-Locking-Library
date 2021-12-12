@@ -9,7 +9,7 @@
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
 # Variables.
-readonly LOG_PREFIX='[Versioning- and Deployment-System: Version-Creation]: ';
+readonly LOG_PREFIX='[Versioning- and Deployment-System: Version-Creation]: '
 
 readonly NEW_VERSION="$("${PWD}/versioning-and-deployment-system/create-version/subscripts/create-new-version/determine-new-version.sh")"
 readonly COMMIT_MESSAGE_FOR_NEW_VERSION="[Versioning- and Deployment-System] set new Version of Software-Project: \"${NEW_VERSION}\"."
@@ -22,7 +22,7 @@ git fetch origin
 
 source "${PWD}/versioning-and-deployment-system/create-version/subscripts/gitlab/setup-gitlab-repository-config.sh"
 
-source "${PWD}/versioning-and-deployment-system/create-version/subscripts/create-new-version/set-new-version-for-maven.sh" "${NEW_VERSION}"
+source "${PWD}/versioning-and-deployment-system/create-version/subscripts/create-new-version/set-new-maven-version.sh" "${NEW_VERSION}"
 
 source "${PWD}/versioning-and-deployment-system/create-version/subscripts/git-tools/commit-current-workspace-and-tag-commit.sh" "${COMMIT_MESSAGE_FOR_NEW_VERSION}" "${NEW_VERSION}"
 
