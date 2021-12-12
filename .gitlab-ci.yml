@@ -75,4 +75,4 @@ deploy to Sonatype Maven-Central via Maven:
     - cp ${M2_SETTINGS_FILECONTENT} "${HOME}/.m2/settings.xml"
     - gpg2 --batch -c --passphrase ${GPG2_PRIVATE_KEY_PASSPHRASE} ${GPG2_PRIVATE_KEY_FILE}
     - gpg --list-keys
-    # - versioning-and-deployment-system/deploy-version/deploy-new-version.sh 'MAVEN_DEPLOYMENT'
+    - versioning-and-deployment-system/deploy-version/deploy-new-version.sh 'MAVEN_DEPLOYMENT'
