@@ -14,7 +14,9 @@ readonly LOG_PREFIX='[Versioning- and Deployment-System: Version-Deployment: Mav
 readonly PATH_TO_CUSTOM_M2_SETTINGS_FILE=${1}
 
 if [[ -z ${PATH_TO_CUSTOM_M2_SETTINGS_FILE} ]]; then
-  cp ${M2_SETTINGS_FILECONTENT} "${HOME}/.m2/settings.xml"
+  cp "${M2_SETTINGS_FILECONTENT}" "${HOME}/.m2/settings.xml"
 fi
 
-maven deploy
+echo "${LOG_PREFIX}Start Maven-Deployment."
+mvn deploy
+echo "${LOG_PREFIX}Maven-Deployment finished."

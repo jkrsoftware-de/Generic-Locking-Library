@@ -19,9 +19,10 @@ if [[ -z ${DEPLOYMENT_VARIANT} ]]; then
 fi
 
 if [ "${DEPLOYMENT_VARIANT}" == "MAVEN_DEPLOYMENT" ]; then
-  echo "${LOG_PREFIX}Start Maven-Deployment."
   "${PWD}/versioning-and-deployment-system/deploy-version/deployment-variants/maven-deployment.sh" "${2}"
-  echo "${LOG_PREFIX}Maven-Deployment finished."
+elif [ "${DEPLOYMENT_VARIANT}" == "GIT_DEPLOYMENT" ]; then
+  echo "${LOG_PREFIX}This Deployment-Variant is not implemented yet."
+fi
 elif [ "${DEPLOYMENT_VARIANT}" == "SSH_DEPLOYMENT" ]; then
   echo "${LOG_PREFIX}This Deployment-Variant is not implemented yet."
 fi
