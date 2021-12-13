@@ -8,7 +8,6 @@
 # made for jkrsoftware.de as Versioning- and Deployment-System.
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
-# Gitlab-CI Configuration for the Generic-"Locking Library".
 ## Global-Config.
 services:
   - docker:dind
