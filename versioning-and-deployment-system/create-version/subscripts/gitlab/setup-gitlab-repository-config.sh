@@ -6,13 +6,8 @@
 # My Intention of creating/publishing Free-Software is to help our Public Society.
 # In this particular Case our newly-created "Computer-World". I mean everything regarding complex IT-Systems.
 #
-# made for jkrsoftware.de as Versioning- and Deployment-System.
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
-
-readonly SYSTEM_TO_DEPLOY=${1}
-
-if [[ -z ${SYSTEM_TO_DEPLOY} ]]; then
-  echo "Can't deploy the current Version, cause you don't specified an System, where I should deploy it.";
-  exit 1
-fi
+git config --global user.email "versioning-and-deployment-system.${CI_PIPELINE_ID}.${CI_JOB_ID}@$(hostname)"
+git config --global user.name "Versioning- and Deployment-System."
+git remote set-url --push origin "${GIT_REPOSITORY_URL_WITH_CREDENTIALS}"

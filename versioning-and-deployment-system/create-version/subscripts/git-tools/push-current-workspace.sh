@@ -6,17 +6,17 @@
 # My Intention of creating/publishing Free-Software is to help our Public Society.
 # In this particular Case our newly-created "Computer-World". I mean everything regarding complex IT-Systems.
 #
-# made for jkrsoftware.de as Versioning- and Deployment-System.
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
+# Variables.
+readonly BRANCH_TO_COMMIT=${1}
 
-readonly NEW_VERSION_TO_SET=${1}
-
-if [[ -z ${NEW_VERSION_TO_SET} ]]; then
-  echo "Can't set a new Version (over Apache's Maven-Release Plugin), cause you don't specified a Text for the new one."
+# Procedures.
+if [[ -z ${BRANCH_TO_COMMIT} ]]; then
+  echo "Can't push the current Workspace to the Remote-Git-Repository, cause you don't provided a Remote-Branch.";
   exit 1
 fi
 
-mvn clean test verify
-mvn versions:set -DnewVersion=${NEW_VERSION_TO_SET}
-git add pom.xml
+echo "${LOG_PREFIX}Push the current Workspace to the Remote-Git-Repository."
+git checkout -b "${BRANCH_TO_COMMIT}"
+git push origin "${BRANCH_TO_COMMIT}" --tags

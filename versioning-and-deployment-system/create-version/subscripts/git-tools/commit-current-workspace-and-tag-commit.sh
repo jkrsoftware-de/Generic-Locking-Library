@@ -6,13 +6,13 @@
 # My Intention of creating/publishing Free-Software is to help our Public Society.
 # In this particular Case our newly-created "Computer-World". I mean everything regarding complex IT-Systems.
 #
-# made for jkrsoftware.de as Versioning- and Deployment-System.
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
-
+# Variables.
 readonly COMMIT_MESSAGE=${1}
 readonly GIT_TAG=${2}
 
+# Procedures.
 if [[ -z ${COMMIT_MESSAGE} ]]; then
   echo "Can't commit (and tag the newly-created Commit) of the current Git-Workspace, cause you don't provided a Commit-Message.";
   exit 1

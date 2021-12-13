@@ -6,11 +6,18 @@
 # My Intention of creating/publishing Free-Software is to help our Public Society.
 # In this particular Case our newly-created "Computer-World". I mean everything regarding complex IT-Systems.
 #
-# made for jkrsoftware.de as Versioning- and Deployment-System.
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
+# Variables.
+readonly LOG_PREFIX='[Versioning- and Deployment-System: Version-Deployment: Maven-Deployment]: '
 
-readonly DATE_OF_LAST_COMMIT="$(git log -1 --date=format:"%Y-%m-%d_%H-%M" --format="%ad")"
-readonly SHORT_GIT_COMMIT_ID_OF_LAST_COMMIT="$(git rev-parse --verify HEAD --short)"
+readonly PATH_TO_CUSTOM_M2_SETTINGS_FILE=${1}
 
-echo "${DATE_OF_LAST_COMMIT}_${SHORT_GIT_COMMIT_ID_OF_LAST_COMMIT}"
+# Procedures.
+if [[ -n ${PATH_TO_CUSTOM_M2_SETTINGS_FILE} ]]; then
+  cp "${PATH_TO_CUSTOM_M2_SETTINGS_FILE}" "${HOME}/.m2/settings.xml"
+fi
+
+echo "${LOG_PREFIX}Start Maven-Deployment."
+mvn clean compile verify deploy
+echo "${LOG_PREFIX}Maven-Deployment finished."
