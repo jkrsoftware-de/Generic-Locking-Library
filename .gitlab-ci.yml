@@ -9,22 +9,22 @@
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
 # Gitlab-CI Configuration for the Generic-"Locking Library".
+## Global-Config.
 services:
   - docker:dind
 
-## Pipeline-Stages.
 stages:
   - build-stage
   - version-creation-stage
   - version-deployment-stage
 
-## Global Variable (set for each created Pipeline).
 variables:
   DOCKER_TLS_CERTDIR: ''
   DOCKER_DRIVER: overlay2
   SPRING_PROFILES_ACTIVE: gitlab-ci
+  GIT_SUBMODULE_STRATEGY: recursive
 
-## Jobs.
+## Pipeline-Jobs.
 
 ### Build the Software-Project.
 Build the Application:
@@ -54,9 +54,10 @@ create new Version of the Software-Project:
   when: manual
   only:
     - /^main$/
+  before_script:
+    - apt update -y && apt install ssh git -y
   script:
-    - apt update -y && apt install git -y
-    - versioning-and-deployment-system/create-version/create-new-version.sh
+    - versioning-and-deployment-system/create-version/create-new-version.sh "${GIT_REPOSITORY_URL_WITH_CREDENTIALS}"
 
 ### Version-Deployment (to Sonatype Maven-Central via Maven).
 deploy to Sonatype Maven-Central via Maven:
@@ -66,8 +67,9 @@ deploy to Sonatype Maven-Central via Maven:
   when: manual
   only:
     - /^release/
+  before_script:
+    - apt update -y && apt install ssh git gnupg2 -y
   script:
-    - apt update -y && apt install git gnupg2 -y
     - gpg --import ${GPG_PRIVATE_KEY_FILE}
     - versioning-and-deployment-system/deploy-version/deploy-new-version.sh 'MAVEN_DEPLOYMENT' "${M2_SETTINGS_FILE}"
 
@@ -79,6 +81,7 @@ deploy to GitHub.:
   when: manual
   only:
     - /^release/
+  before_script:
+    - apt update -y && apt install ssh git -y
   script:
-    - apt update -y && apt install git -y
     - versioning-and-deployment-system/deploy-version/deploy-new-version.sh 'GIT_DEPLOYMENT' "${GITHUB_REPOSITORY_URL_WITH_CREDENTIALS}" 'main'
