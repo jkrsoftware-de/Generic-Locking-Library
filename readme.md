@@ -13,34 +13,41 @@ project is developed by [jkrsoftware.de](https://www.jkrsoftware.de).
 ---
 
 ## 💬 Contact Me.
+
 If you need any help or just want to talk to me, have a look here: [contact-informations.md](contact-informations.md).
 
 ---
 
-## 📕 About all of my Software-Products.
-Just read the following Paragraphs. 😊
+## 🔧 How to use this Library.
 
 ---
 
-### 📃 I use the „Ports & Adapters“- / „Hexagonal“-Software-Design.
-For every newly-created Software, I use the **„Ports & Adapters“-Design**.
+### ➜ Import the Library via your favourite Dependency-Management-Tool.
 
-For better understanding — what the **„Ports & Adapters“-Design** is — have a look here: [Wikipedia (EN) · Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
+All my public Libraries are released to Maven Central, so use it right away from there, if you want.
 
----
+```
+<dependency>
+    <groupId>one.jkr.de.jkrsoftware.entity.locking.libraries</groupId>
+    <artifactId>Generic-Locking-Library</artifactId>
+    <version>[the Version, you would like to use.]</version>
+</dependency>
+```
 
-### 📃 The underlying Software-License.
-This Software is free forever.
+Currently, there is no Plan to change the fundamental API of the *Generic Locking-Library* and *all other Locking-Libraries*, so I don't
+provide any Information about previous Releases.<br />
+I recommend to use always the latest available Version.
 
-There is nothing to pay and nothing to fulfill, to use/to edit/to (re-)publish my written Software-Code.
-
-*You can also have a look at: [license.md](license.md) in the same Directory.*
+If it will be good to change the existing API, I will provide Release-Informations about past/previous and upcoming Releases over an own
+Plattform — as Part of the **jkrsoftware Promise, to keep every Software-Project maintained in my Lifetime**.
 
 ---
 
 ## 📙 About the „Entity Locking“-Libraries.
-I'm developing the Entity Locking-Libraries, cause in many of my current (and future) Software-Products, I need an 
-easy Way to lock Entities, such as:
+
+I'm developing the Entity Locking-Libraries, cause in many of my current (and future) Software-Products, I need an easy Way to lock
+Entities, such as:
+
 * Payment-Transactions for Reality.
 * Payment-Transactions for own Gaming-Platforms.
 * virtual Bank-Accounts for own Gaming-Platforms.
@@ -65,7 +72,6 @@ I decided to design/develop the Libraries in this Way, cause:
 * and I've a good Foundation for further Development-Approaches.<br />
   Don't need to update the Core-Library, if I only want to develop a new Implementation.
 
-
 ---
 
 ### 📃 Why should I use one of these Libraries?
@@ -76,10 +82,48 @@ You can have an **Entity-Locking-Solution** right out of the Box for (currently)
 
 The Generic-Locking-Library is the Foundation of every Locking-Library developed by me.
 
-You can use the **Generic-Locking-Library** in Combination with your own Lock-Backend-Implementation — or — you use my Implementations, in the Form of Extension-Libraries, such as:
+You can use the **Generic-Locking-Library** in Combination with your own Lock-Backend-Implementation — or — you use my Implementations, in
+the Form of Extension-Libraries, such as:
+
 * **DynamoDB-Locking-Library**
   * for _Spring Boot_-Apps: *DynamoDB-Locking-Library-SpringBoot-Starter*
 * (coming soon) the **Redis-Locking-Library**
-    * for _Spring Boot_-Apps: *Redis-Locking-Library-SpringBoot-Starter*
+  * for _Spring Boot_-Apps: *Redis-Locking-Library-SpringBoot-Starter*
 
 ---
+
+## 📕 About all of my public-accessible (Open-Source) Software-Products.
+
+Read the following Paragraphs, if you want. 😊
+
+---
+
+### 📃 I use the „Ports & Adapters“- / „Hexagonal“-Software-Design.
+
+For every newly-created Software, I use the **„Ports & Adapters“-Design**.
+
+For better understanding — what the **„Ports & Adapters“-Design** is — have a look
+here: [Wikipedia (EN) · Hexagonal Architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software))
+
+---
+
+### 📃 The underlying Software-License.
+
+This Software is free forever.
+
+There is nothing to pay and nothing to fulfill, to use/to edit/to (re-)publish my written Software-Code.
+
+*You can also have a look at: [license.md](license.md) in the same Directory.*
+
+---
+
+### 📃 Lifetime-Maintain-Promise.
+
+**I promise, to keep every Software-Project maintained in my Lifetime.**<br />
+Every Software-Project, I release, will always be maintained, unless I'll communicate something else.
+
+Currently, each Software-Project is also used by myself.<br />
+So I create/maintain the Software for me and for you. 😊
+
+---
+
