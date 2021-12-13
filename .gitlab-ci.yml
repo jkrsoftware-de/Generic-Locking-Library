@@ -8,78 +8,77 @@
 # made for jkrsoftware.de as Versioning- and Deployment-System.
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
-
 # Gitlab-CI Configuration for the Generic-"Locking Library".
-image: docker:latest
 services:
   - docker:dind
 
-## The (configured) Pipeline-Stages.
+## Pipeline-Stages.
 stages:
   - build-stage
   - version-creation-stage
-  - version-deployment-stage-manual-approval
   - version-deployment-stage
 
-## Global Variable for every Pipeline.
+## Global Variable (set for each created Pipeline).
 variables:
   DOCKER_TLS_CERTDIR: ''
   DOCKER_DRIVER: overlay2
   SPRING_PROFILES_ACTIVE: gitlab-ci
 
-## Pipeline Jobs
+## Jobs.
 
-### Standard Maven-Build.
-Maven (Build):
-  stage: build-stage
+### Build the Software-Project.
+Build the Application:
   image: maven:3.8-openjdk-11-slim
+  stage: build-stage
   allow_failure: false
   cache:
     paths:
       - '.m2/'
-  script: "mvn clean package -B"
+  script: 'mvn clean package -B'
 
-### Standard Maven-Test.
-Maven (Run Tests):
-  stage: build-stage
+### Run Tests of the Software-Project.
+Run Tests of the Application:
   image: maven:3.8-openjdk-11-slim
+  stage: build-stage
   allow_failure: false
   cache:
     paths:
       - '.m2/'
-  script: "mvn clean test verify"
+  script: 'mvn clean test verify -Dgpg.skip'
 
 ### Version-Creation.
-create new Version:
-  stage: version-creation-stage
+create new Version of the Software-Project:
   image: maven:3.8-openjdk-11-slim
+  stage: version-creation-stage
   allow_failure: false
   when: manual
   only:
     - /^main$/
   script:
     - apt update -y && apt install git -y
-    - common-versioning-and-deployment-system/create-new-version.sh
+    - versioning-and-deployment-system/create-version/create-new-version.sh
 
-### Manual-Approval for Version-Deployment.
-deploy current Version:
-  stage: version-deployment-stage-manual-approval
-  image: alpine:latest
+### Version-Deployment (to Sonatype Maven-Central via Maven).
+deploy to Sonatype Maven-Central via Maven:
+  image: maven:3.8-openjdk-11-slim
+  stage: version-deployment-stage
   allow_failure: false
   when: manual
   only:
-    - /^release$/
+    - /^release/
   script:
-    - echo "Deployment (of the current Version) has been triggered."
+    - apt update -y && apt install git gnupg2 -y
+    - gpg --import ${GPG_PRIVATE_KEY_FILE}
+    - versioning-and-deployment-system/deploy-version/deploy-new-version.sh 'MAVEN_DEPLOYMENT' "${M2_SETTINGS_FILE}"
 
-### Version-Deployment (GitHub).
-deploy to GitLab:
-  stage: version-deployment-stage
+### Version-Deployment (to GitHub.).
+deploy to GitHub.:
   image: maven:3.8-openjdk-11-slim
+  stage: version-deployment-stage
   allow_failure: false
   when: manual
   only:
     - /^release/
   script:
     - apt update -y && apt install git -y
-    - common-versioning-and-deployment-system/deploy-new-version.sh "GITHUB"
+    - versioning-and-deployment-system/deploy-version/deploy-new-version.sh 'GIT_DEPLOYMENT' "${GITHUB_REPOSITORY_URL_WITH_CREDENTIALS}" 'main'
