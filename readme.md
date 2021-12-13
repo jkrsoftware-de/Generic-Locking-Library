@@ -1,9 +1,15 @@
 # Generic Locking-Library.
+
+[![jkrsoftware.de Logo](https://jkrprojects-static-files-993857686066.s3.eu-central-1.amazonaws.com/static-images/project-logos/jkrsoftware.de_250x69.png)](https://www.jkrsoftware.de)<br />
+project is developed by [jkrsoftware.de](https://www.jkrsoftware.de).
+
 ---
+
 [![latest published version](https://badgen.net/maven/v/maven-central/one.jkr.de.jkrsoftware.entity.locking.libraries/Generic-Locking-Library)](https://s01.oss.sonatype.org/content/repositories/public/one/jkr/de/jkrsoftware/entity/locking/libraries/Generic-Locking-Library/)
 [![last commit on main-branch](https://badgen.net/github/last-commit/jkrsoftware-de/Generic-Locking-Library/main)](https://github.com/jkrsoftware-de/Generic-Locking-Library/commit/main)
 [![current watchers](https://badgen.net/github/watchers/jkrsoftware-de/Generic-Locking-Library)](https://github.com/jkrsoftware-de/Generic-Locking-Library/watchers)
 [![given stars](https://badgen.net/github/stars/jkrsoftware-de/Generic-Locking-Library)](https://github.com/jkrsoftware-de/Generic-Locking-Library/stargazers)
+
 ---
 
 ## 💬 Contact Me.
