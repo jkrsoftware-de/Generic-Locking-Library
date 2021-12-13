@@ -6,15 +6,18 @@
 # My Intention of creating/publishing Free-Software is to help our Public Society.
 # In this particular Case our newly-created "Computer-World". I mean everything regarding complex IT-Systems.
 #
-# made for jkrsoftware.de as Versioning- and Deployment-System.
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
+# Variables.
+readonly LOG_PREFIX='[Versioning- and Deployment-System: Version-Deployment: Maven-Deployment]: '
 
-# Set Commiter's Name and E-Mail.
-git config --global user.email "gitlab-ci.${CI_PIPELINE_ID}.${CI_JOB_ID}@$(hostname)"
-git config --global user.name "GitLab Deployment-Pipeline :)"
-# Set Commiter's Name and E-Mail.
+readonly PATH_TO_CUSTOM_M2_SETTINGS_FILE=${1}
 
-# Set Remote-Git URL.
-git remote set-url --push origin "${GIT_REPOSITORY_URL_WITH_CREDENTIALS}"
-# Set Remote-Git URL.
+# Procedures.
+if [[ -n ${PATH_TO_CUSTOM_M2_SETTINGS_FILE} ]]; then
+  cp "${PATH_TO_CUSTOM_M2_SETTINGS_FILE}" "${HOME}/.m2/settings.xml"
+fi
+
+echo "${LOG_PREFIX}Start Maven-Deployment."
+mvn clean compile verify deploy
+echo "${LOG_PREFIX}Maven-Deployment finished."

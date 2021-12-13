@@ -6,17 +6,20 @@
 # My Intention of creating/publishing Free-Software is to help our Public Society.
 # In this particular Case our newly-created "Computer-World". I mean everything regarding complex IT-Systems.
 #
-# made for jkrsoftware.de as Versioning- and Deployment-System.
 # made with ❤ by Jeremy Krüger (jkr.one). 😊
 ###### 🌏 ###### 💬 ######
+# Variables.
+readonly GIT_URL_WITH_CREDENTIALS=${1}
 
-readonly NEW_VERSION_TO_SET=${1}
-
-if [[ -z ${NEW_VERSION_TO_SET} ]]; then
-  echo "Can't set a new Version (over Apache's Maven-Release Plugin), cause you don't specified a Text for the new one."
+# Procedures.
+if [[ -z ${GIT_URL_WITH_CREDENTIALS} ]]; then
+  echo "You must provide an URL (with Authorization) in order to fulfill a Git-Deployment."
   exit 1
 fi
 
-mvn clean test verify
-mvn versions:set -DnewVersion=${NEW_VERSION_TO_SET}
-git add pom.xml
+git config --global user.email "versioning-and-deployment-system.${CI_PIPELINE_ID}.${CI_JOB_ID}@$(hostname)"
+git config --global user.name "Versioning- and Deployment-System."
+git remote add git-clone "${GIT_URL_WITH_CREDENTIALS}"
+
+git push git-clone --tags
+git push git-clone main -f
