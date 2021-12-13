@@ -1,4 +1,4 @@
-package one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in;
+package one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in.unlock;
 
 import lombok.NonNull;
 import lombok.Value;

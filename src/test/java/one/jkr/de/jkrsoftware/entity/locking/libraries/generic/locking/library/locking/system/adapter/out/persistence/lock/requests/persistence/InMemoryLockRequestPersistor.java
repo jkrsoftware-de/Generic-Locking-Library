@@ -7,13 +7,16 @@ import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.l
 import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.LockIdentifier;
 import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.request.LockRequest;
 import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.request.LockRequestId;
-import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.timeout.strategy.TimebasedLockTimeoutStrategy;
-import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.timeout.strategy.LockTimeoutReachedException;
 import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.timeout.strategy.LockTimeoutStrategy;
+import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.timeout.strategy.TimebasedLockTimeoutStrategy;
 
 import java.time.Clock;
 import java.time.OffsetDateTime;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -38,38 +41,28 @@ public class InMemoryLockRequestPersistor implements LockRequestPort {
     }
 
     @Override
-    public void waitForFreeSlot(@NonNull LockRequest lockRequest, @NonNull LockTimeoutStrategy lockTimeoutStrategy)
-            throws LockTimeoutReachedException {
-
+    public void waitForFreeSlot(@NonNull LockRequest lockRequest, @NonNull LockTimeoutStrategy lockTimeoutStrategy) {
         log.debug(LOG_PREFIX + "Wait for next Time-Slot to fulfil the Lock-Request \"{}\".", lockRequest);
 
-        while (!isNextRequestInQueue(lockRequest)) {
-            handleLockTimeoutStrategy(lockRequest, lockTimeoutStrategy);
-            try {
-                Thread.sleep(pollingRateOnLockRequestQueue);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+        AtomicBoolean isNextRequestInQueue = new AtomicBoolean(false);
+        ScheduledFuture<?> recheckLockRequestQueueSchedule = Executors.newSingleThreadScheduledExecutor()
+                .scheduleWithFixedDelay(
+                        () -> isNextRequestInQueue.set(isNextRequestInQueue(lockRequest)),
+                        0, pollingRateOnLockRequestQueue, TimeUnit.MILLISECONDS
+                );
+
+        while (!isNextRequestInQueue.get()) {
+            if (lockTimeoutStrategy instanceof TimebasedLockTimeoutStrategy) {
+                boolean limitReached = ((TimebasedLockTimeoutStrategy) lockTimeoutStrategy)
+                        .isLimitReached(lockRequest.getRequestedAt(), OffsetDateTime.now(clock));
+                if (limitReached) {
+                    log.warn("The timebased Timeout-Limit for Lock Request \"{}\" is reached. Used Strategy: \"{}\".",
+                            lockRequest, lockTimeoutStrategy);
+                    break;
+                }
             }
         }
-    }
-
-    private void handleLockTimeoutStrategy(@NonNull LockRequest lockRequest, @NonNull LockTimeoutStrategy lockTimeoutStrategy)
-            throws LockTimeoutReachedException {
-        boolean shouldTimeout;
-        if (lockTimeoutStrategy instanceof TimebasedLockTimeoutStrategy) {
-            shouldTimeout = ((TimebasedLockTimeoutStrategy) lockTimeoutStrategy).isLimitReached(lockRequest.getRequestedAt(),
-                    OffsetDateTime.now());
-        } else {
-            log.error(LOG_PREFIX + "Couldn't handle the Lock-Timeout Strategy, cause it's defined but not managed by the Handler.");
-            throw new RuntimeException("Couldn't handle the Lock-Timeout Strategy, cause it's defined but not managed by the Handler.");
-        }
-
-        if (shouldTimeout) {
-            log.error(LOG_PREFIX + "The Lock-Waiting timed out for LockRequest \"{}\". Specified LockTimeout-Strategy was: \"{}\".",
-                    lockRequest, lockTimeoutStrategy);
-            throw new LockTimeoutReachedException("The Lock-Waiting timed out for LockRequest \"" + lockRequest + "\". Specified " +
-                    "LockTimeout-Strategy was: \"" + lockTimeoutStrategy + "\".");
-        }
+        recheckLockRequestQueueSchedule.cancel(false);
     }
 
     @Override

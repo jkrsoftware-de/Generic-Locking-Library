@@ -3,13 +3,13 @@ package one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in.ForceUnlockCommand;
-import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in.LockCommand;
-import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in.LockingUseCase;
-import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in.UnlockCommand;
-import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.LockIdentifier;
+import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in.get.current.entity.lock.GetCurrentEntityLockCommand;
+import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in.get.current.entity.lock.IsAlreadyLockedCommand;
+import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in.lock.LockCommand;
+import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in.unlock.ForceUnlockCommand;
+import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.port.in.unlock.UnlockCommand;
+import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.application.service.LockingService;
 import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.entity.lock.EntityLock;
-import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.timeout.strategy.LockTimeoutReachedException;
 import one.jkr.de.jkrsoftware.entity.locking.libraries.generic.locking.library.locking.system.domain.lock.timeout.strategy.LockTimeoutStrategy;
 
 import java.util.Optional;
@@ -19,30 +19,30 @@ import java.util.Optional;
 public class LockingSystemAdapter {
 
     @NonNull
-    private final LockingUseCase lockingUseCase;
+    private final LockingService lockingService;
 
-    public Optional<EntityLock> getCurrentEntityLock(@NonNull LockIdentifier lockIdentifier) {
-        return lockingUseCase.getCurrentEntityLock(lockIdentifier);
+    public Optional<EntityLock> getCurrentEntityLock(@NonNull GetCurrentEntityLockCommand command) {
+        return lockingService.getCurrentEntityLock(command);
     }
 
-    public boolean isAlreadyLocked(@NonNull LockIdentifier lockIdentifier) {
-        return lockingUseCase.isAlreadyLocked(lockIdentifier);
+    public boolean isAlreadyLocked(@NonNull IsAlreadyLockedCommand command) {
+        return lockingService.isAlreadyLocked(command);
     }
 
-    public EntityLock waitForLock(@NonNull LockCommand lockCommand, @NonNull LockTimeoutStrategy lockTimeoutStrategy)
-            throws LockTimeoutReachedException {
-        return lockingUseCase.waitForLock(lockCommand, lockTimeoutStrategy);
+    public Optional<EntityLock> waitForLock(@NonNull LockCommand lockCommand, @NonNull LockTimeoutStrategy lockTimeoutStrategy) {
+        return lockingService.waitForLock(lockCommand, lockTimeoutStrategy);
     }
 
     public Optional<EntityLock> lock(@NonNull LockCommand lockCommand) {
-        return lockingUseCase.lock(lockCommand);
+        return lockingService.lock(lockCommand);
     }
 
     public boolean unlock(@NonNull UnlockCommand unlockCommand) {
-        return lockingUseCase.unlock(unlockCommand);
+        return lockingService.unlock(unlockCommand);
     }
 
     public boolean unlock(@NonNull ForceUnlockCommand forceUnlockCommand) {
-        return lockingUseCase.unlock(forceUnlockCommand);
+        return lockingService.unlock(forceUnlockCommand);
     }
+
 }

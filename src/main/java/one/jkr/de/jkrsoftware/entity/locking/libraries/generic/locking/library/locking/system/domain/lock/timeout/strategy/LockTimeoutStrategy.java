@@ -6,8 +6,12 @@ import java.time.Duration;
 
 public interface LockTimeoutStrategy {
 
-    static TimebasedLockTimeoutStrategy hardTimeBasedLockTimeoutStrategy(@NonNull Duration duration) {
+    static TimebasedLockTimeoutStrategy timebasedLockTimeOutStrategy(@NonNull Duration duration) {
         return new TimebasedLockTimeoutStrategy(duration);
+    }
+
+    static WithoutLockTimeoutStrategy withoutLockTimeoutStrategy() {
+        return new WithoutLockTimeoutStrategy();
     }
 
 }
