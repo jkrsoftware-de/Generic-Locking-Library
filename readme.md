@@ -87,6 +87,8 @@ the Form of Extension-Libraries, such as:
 
 * **DynamoDB-Locking-Library**
   * for _Spring Boot_-Apps: *DynamoDB-Locking-Library-SpringBoot-Starter*
+* **InMemoryStore-Locking-Library**
+  * for _Spring Boot_-Apps: *InMemoryStore-Locking-Library-SpringBoot-Starter*
 * (coming soon) the **Redis-Locking-Library**
   * for _Spring Boot_-Apps: *Redis-Locking-Library-SpringBoot-Starter*
 
